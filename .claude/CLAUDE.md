@@ -46,7 +46,8 @@
 ```
 .claude/
 ├── CLAUDE.md              # このファイル
-├── settings.json          # Claude Code設定（MCP、Hooks）
+├── settings.json          # Claude Code設定（Hooks、権限）
+├── .mcp.json              # MCP設定（API Key等を含む場合は.gitignore推奨）
 ├── tmp/                   # 一時ファイル（git管理外）
 │   └── design/            # 設計書
 ├── rules/                 # 自動適用ルール
@@ -116,9 +117,34 @@
 
 ## MCP（Model Context Protocol）
 
-以下のMCPサーバーが設定済みです:
+MCP設定は`.claude/.mcp.json`に記述します。
 
-### Playwright
+### 初期設定（Context7 API Key）
+
+Context7を使用するには、API Keyの設定が必要です。
+
+1. [Context7](https://context7.com/)でAPI Keyを取得
+2. `.claude/.mcp.json`のcontext7セクションにenv設定を追加:
+
+```json
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"],
+      "env": {
+        "CONTEXT7_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}
+```
+
+**注意**: API Keyを含む`.mcp.json`は`.gitignore`に追加するか、`settings.local.json`で管理してください。
+
+### 利用可能なMCPサーバー
+
+#### Playwright
 UIのスクリーンショット撮影、ブラウザ操作。
 
 ```
@@ -128,10 +154,10 @@ mcp__playwright__browser_screenshot
 
 **注意**: スクリーンショットは必ず`magick`でリサイズしてから使用。
 
-### Chrome DevTools
+#### Chrome DevTools
 ブラウザのDevTools操作。
 
-### Context7
+#### Context7
 OSS（Rails、ViewComponentなど）の最新ドキュメントにアクセス。
 
 ```

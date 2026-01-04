@@ -2,3 +2,4 @@ REQUEST.md
 .claude/settings.local.json
 .claude/tmp/
 .claude/skills/external-systems/*
+.mcp.json

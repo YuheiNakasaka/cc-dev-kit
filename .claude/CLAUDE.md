@@ -61,6 +61,8 @@
 │   ├── architect/         # アーキテクト
 │   ├── design-reviewer/   # 設計レビュアー
 │   ├── code-reviewer/     # コードレビュアー
+│   ├── debugger/          # デバッガー
+│   ├── refactorer/        # リファクタラー
 │   ├── api-developer/     # API開発者
 │   ├── frontend-developer/# フロントエンド開発者
 │   ├── db-designer/       # DB設計者
@@ -106,8 +108,10 @@
 - **db-designer**: スキーマ設計、マイグレーション
 - **ui-designer**: UIデザイン、スタイリング
 
-### レビューフェーズ
+### レビュー・品質改善フェーズ
 - **code-reviewer**: commit前のコードレビュー
+- **debugger**: 体系的な根本原因分析でバグを解決
+- **refactorer**: コード品質向上、技術的負債の削減
 
 ### TDDフェーズ
 - **tdd-test-writer**: テストの作成（Redフェーズ）

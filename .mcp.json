@@ -2,11 +2,11 @@
   "mcpServers": {
     "playwright": {
       "command": "npx",
-      "args": ["-y", "@anthropic-ai/playwright-mcp"]
+      "args": ["-y", "@playwright/mcp@latest"]
     },
     "chrome-devtools": {
       "command": "npx",
-      "args": ["-y", "@anthropic-ai/chrome-devtools-mcp"]
+      "args": ["-y", "chrome-devtools-mcp@latest"]
     },
     "context7": {
       "command": "npx",

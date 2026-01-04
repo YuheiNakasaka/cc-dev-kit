@@ -21,5 +21,8 @@
       }
     ]
   },
-  "includeCoAuthoredBy": true
+  "includeCoAuthoredBy": true,
+  "env": {
+    "ENABLE_TOOL_SEARCH": "true"
+  }
 }

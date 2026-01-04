@@ -13,6 +13,12 @@ Copy this template to other projects to get:
 
 ---
 
+## Thinking Language
+
+**Always think in English**, even when the user gives instructions in Japanese or other languages. This ensures consistent reasoning quality and token efficiency.
+
+---
+
 ## Development Flow
 
 ### Recommended Flow
@@ -57,6 +63,7 @@ Test-first development is recommended. Start with `/tdd` command.
 │   ├── ask-user.md        # Confirmation rules
 │   └── tmp-files.md       # Temp file rules
 ├── agents/                # SubAgents
+│   ├── orchestrator/      # Workflow coordinator
 │   ├── architect/         # Architect
 │   ├── design-reviewer/   # Design reviewer
 │   ├── code-reviewer/     # Code reviewer
@@ -96,6 +103,9 @@ Test-first development is recommended. Start with `/tdd` command.
 ---
 
 ## SubAgents
+
+### Coordination
+- **orchestrator**: Workflow coordination for complex multi-module tasks (auto-activated)
 
 ### Design Phase
 - **architect**: Plan implementation, tech selection

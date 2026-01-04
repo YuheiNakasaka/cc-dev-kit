@@ -7,5 +7,19 @@
       "Read(./.env.*)",
       "Read(./secrets/**)"
     ]
-  }
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if echo \"$TOOL_INPUT\" | grep -q 'git commit'; then echo '[Review Reminder] コミット前にコードレビュー(/review)の実施を推奨します。'; fi"
+          }
+        ]
+      }
+    ]
+  },
+  "includeCoAuthoredBy": true
 }

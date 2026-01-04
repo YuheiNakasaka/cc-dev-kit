@@ -1,49 +1,49 @@
 ---
-description: レビュー確認付きでコミットを作成する
-argument-hint: [コミットメッセージ]
+description: Create commit with review confirmation
+argument-hint: [Commit message]
 allowed-tools: Bash(git add:*), Bash(git commit:*), Bash(git status:*), Bash(git diff:*)
 ---
 
-# レビュー確認付きコミット
+# Commit with Review Confirmation
 
-コードレビューの実施状況を確認してからコミットを作成します。
+Confirm code review status before creating commit.
 
-## コミットメッセージ
+## Commit Message
 $ARGUMENTS
 
-## 実行手順
+## Execution Steps
 
-### 1. 変更内容の確認
+### 1. Check Changes
 
 ```bash
 git status
 git diff --staged
 ```
 
-### 2. レビュー確認
+### 2. Review Confirmation
 
-コードレビューは実施済みですか？
+Has code review been done?
 
-- 実施済みの場合: コミットを作成
-- 未実施の場合: `/review` でレビューを実施することを推奨
+- If done: Create commit
+- If not done: Recommend running `/review`
 
-### 3. コミット作成
+### 3. Create Commit
 
-レビュー実施済み、または未実施でも続行する場合:
+If review done, or continuing without review:
 
 ```bash
 git add -A
 git commit -m "$ARGUMENTS"
 ```
 
-## 注意事項
+## Notes
 
-- レビュー未実施の場合は警告を表示
-- 強制的にブロックはしない（開発者の判断を尊重）
-- 小さな変更や自明な修正はレビューをスキップ可能
+- Warning shown if review not done
+- Not forcibly blocked (respect developer judgment)
+- Small changes or obvious fixes can skip review
 
-## 推奨フロー
+## Recommended Flow
 
 ```
-コード変更 → /review → 修正 → /commit "メッセージ"
+Code changes → /review → Fix → /commit "message"
 ```

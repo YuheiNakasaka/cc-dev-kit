@@ -1,29 +1,29 @@
-# Playwright MCPルール
+# Playwright MCP Rules
 
-## スクリーンショットのリサイズ（必須）
+## Screenshot Resize (Required)
 
-Playwright MCPでスクリーンショットを撮影した場合、Claude Codeで利用する前に必ずImageMagickの`magick`コマンドでリサイズすること。
+When taking screenshots with Playwright MCP, always resize with ImageMagick's `magick` command before using in Claude Code.
 
-**理由**: 画像サイズが大きすぎるとClaude Codeがクラッシュする可能性がある。
+**Reason**: Large images may crash Claude Code.
 
-## リサイズコマンド例
+## Resize Command Examples
 
 ```bash
-# 幅1024pxにリサイズ（アスペクト比維持）
+# Resize to 1024px width (maintain aspect ratio)
 magick input.png -resize 1024x output.png
 
-# 最大幅・高さを指定（アスペクト比維持）
+# Specify max width/height (maintain aspect ratio)
 magick input.png -resize 1024x768\> output.png
 
-# 品質を指定してJPEGに変換
+# Convert to JPEG with quality setting
 magick input.png -resize 1024x -quality 85 output.jpg
 ```
 
-## 推奨ワークフロー
+## Recommended Workflow
 
-1. Playwright MCPでスクリーンショットを撮影
-2. `magick`でリサイズ（幅1024px推奨）
-3. リサイズ後の画像をClaude Codeで分析
+1. Take screenshot with Playwright MCP
+2. Resize with `magick` (1024px width recommended)
+3. Analyze resized image in Claude Code
 
-## 一時ファイルの保存先
-スクリーンショットは `.claude/tmp/` に保存すること。
+## Temp File Location
+Save screenshots to `.claude/tmp/`.

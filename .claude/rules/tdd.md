@@ -1,26 +1,26 @@
-# TDD（テスト駆動開発）ルール
+# TDD (Test-Driven Development) Rules
 
-## 基本方針
-テストファースト開発を推奨するが、厳密なRed-Green-Refactorサイクルは強制しない。
+## Basic Policy
+Test-first development is recommended, but strict Red-Green-Refactor cycle is not enforced.
 
-## 推奨フロー
+## Recommended Flow
 
-### 1. テストを先に書く（Red）
-- 実装したい機能の要件をテストとして表現する
-- テストが失敗することを確認する
+### 1. Write Test First (Red)
+- Express requirements as test cases
+- Verify test fails
 
-### 2. 最小限の実装（Green）
-- テストをパスするための最小限のコードを書く
-- 過剰な実装は避ける
+### 2. Minimal Implementation (Green)
+- Write minimal code to pass the test
+- Avoid over-implementation
 
-### 3. リファクタリング（Refactor）
-- テストがパスした状態を維持しながらコードを改善
-- 重複の除去、命名の改善、構造の整理
+### 3. Refactoring (Refactor)
+- Improve code while keeping tests passing
+- Remove duplication, improve naming, organize structure
 
-## テストの種類
-- **Unit Test**: 個々のメソッドやクラスの動作確認
-- **Integration Test**: コンポーネント間の連携確認
-- **E2E Test**: ユーザー視点でのシナリオ確認
+## Test Types
+- **Unit Test**: Verify individual methods/classes
+- **Integration Test**: Verify component interactions
+- **E2E Test**: Verify user scenarios
 
-## TDDを始める
-`/tdd` コマンドで明示的にTDDフローを開始できる。
+## Start TDD
+Use `/tdd` command to explicitly start TDD flow.

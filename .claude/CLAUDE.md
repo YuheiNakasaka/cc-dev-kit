@@ -1,134 +1,134 @@
-# Claude Code 開発基盤
+# Claude Code Development Kit
 
-このリポジトリはClaude Codeを中心としたチーム開発のためのテンプレートです。
+This repository is a template for team development centered around Claude Code.
 
-## 概要
+## Overview
 
-このテンプレートを他のプロジェクトにコピーして使用することで、以下の開発基盤が整います:
+Copy this template to other projects to get:
 
-- 役割分担によるSubAgents（アーキテクト、レビュアー、各種開発者）
-- TDD（テスト駆動開発）のサポート
-- コードレビューの仕組み
-- 一貫したルールとワークフロー
-
----
-
-## 開発フロー
-
-### 推奨フロー
-
-```
-1. /architect [機能説明]     → 実装方針の立案
-2. /design-review            → 設計レビュー
-3. /tdd [機能説明]           → TDDで実装（テスト → 実装 → リファクタ）
-4. /review                   → コードレビュー
-5. /commit "メッセージ"       → コミット
-```
-
-### TDD（テスト駆動開発）
-
-テストファースト開発を推奨します。`/tdd` コマンドで開始できます。
-
-1. **Red**: テストを先に書く（失敗することを確認）
-2. **Green**: テストを通す最小限の実装
-3. **Refactor**: コードを改善（テストは維持）
-
-### コミット規約
-
-- 1機能ごとにこまめにcommit
-- commit前のコードレビューを推奨
-- コミット時に警告が表示されますが、ブロックはしません
+- Role-based SubAgents (architect, reviewers, developers)
+- TDD (Test-Driven Development) support
+- Code review workflow
+- Consistent rules and workflows
 
 ---
 
-## ディレクトリ構造
+## Development Flow
+
+### Recommended Flow
 
 ```
-.mcp.json                  # MCP設定（API Key等を含む場合は.gitignore推奨）
+1. /architect [feature]      → Design implementation plan
+2. /design-review            → Review design
+3. /tdd [feature]            → TDD implementation (Test → Code → Refactor)
+4. /review                   → Code review
+5. /commit "message"         → Commit with review check
+```
+
+### TDD (Test-Driven Development)
+
+Test-first development is recommended. Start with `/tdd` command.
+
+1. **Red**: Write test first (verify it fails)
+2. **Green**: Minimal implementation to pass test
+3. **Refactor**: Improve code (keep tests passing)
+
+### Commit Convention
+
+- Commit frequently per feature
+- Code review before commit is recommended
+- Warning shown on commit, but not blocked
+
+---
+
+## Directory Structure
+
+```
 .claude/
-├── CLAUDE.md              # このファイル
-├── settings.json          # Claude Code設定（Hooks、権限）
-├── tmp/                   # 一時ファイル（git管理外）
-│   └── design/            # 設計書
-├── rules/                 # 自動適用ルール
-│   ├── general.md         # 一般ルール
-│   ├── tdd.md             # TDDルール
-│   ├── commit.md          # コミットルール
-│   ├── playwright.md      # Playwrightルール
-│   ├── ask-user.md        # 確認ルール
-│   └── tmp-files.md       # 一時ファイルルール
+├── CLAUDE.md              # This file
+├── settings.json          # Claude Code settings (Hooks, permissions)
+├── tmp/                   # Temp files (not in git)
+│   └── design/            # Design docs
+├── rules/                 # Auto-applied rules
+│   ├── general.md         # General rules
+│   ├── tdd.md             # TDD rules
+│   ├── commit.md          # Commit rules
+│   ├── playwright.md      # Playwright rules
+│   ├── ask-user.md        # Confirmation rules
+│   └── tmp-files.md       # Temp file rules
 ├── agents/                # SubAgents
-│   ├── architect/         # アーキテクト
-│   ├── design-reviewer/   # 設計レビュアー
-│   ├── code-reviewer/     # コードレビュアー
-│   ├── debugger/          # デバッガー
-│   ├── refactorer/        # リファクタラー
-│   ├── api-developer/     # API開発者
-│   ├── frontend-developer/# フロントエンド開発者
-│   ├── db-designer/       # DB設計者
-│   ├── ui-designer/       # UIデザイナー
-│   ├── modeler/           # モデリング担当
-│   ├── tdd-test-writer/   # TDDテスト作成者
-│   └── tdd-implementer/   # TDD実装者
+│   ├── architect/         # Architect
+│   ├── design-reviewer/   # Design reviewer
+│   ├── code-reviewer/     # Code reviewer
+│   ├── debugger/          # Debugger
+│   ├── refactorer/        # Refactorer
+│   ├── api-developer/     # API developer
+│   ├── frontend-developer/# Frontend developer
+│   ├── db-designer/       # DB designer
+│   ├── ui-designer/       # UI designer
+│   ├── modeler/           # Domain modeler
+│   ├── tdd-test-writer/   # TDD test writer
+│   └── tdd-implementer/   # TDD implementer
 ├── skills/                # Skills
-│   ├── ui-check/          # UI確認スキル
-│   └── external-systems/  # 外部システム連携
-└── commands/              # スラッシュコマンド
-   ├── architect.md       # /architect
-   ├── design-review.md   # /design-review
-   ├── review.md          # /review
-   ├── tdd.md             # /tdd
-   └── commit.md          # /commit
+│   ├── ui-check/          # UI check skill
+│   └── external-systems/  # External system integration
+└── commands/              # Slash commands
+    ├── architect.md       # /architect
+    ├── design-review.md   # /design-review
+    ├── review.md          # /review
+    ├── tdd.md             # /tdd
+    └── commit.md          # /commit
+└── .mcp.json              # MCP config (add to .gitignore if contains API keys)
 ```
 
 ---
 
-## コマンド一覧
+## Commands
 
-| コマンド | 説明 |
-|---------|------|
-| `/architect [説明]` | アーキテクトを呼び出して実装方針を立案 |
-| `/design-review` | 設計レビューを実行 |
-| `/review` | コードレビューを実行 |
-| `/tdd [説明]` | TDD開発フローを開始 |
-| `/commit "メッセージ"` | レビュー確認付きコミット |
+| Command | Description |
+|---------|-------------|
+| `/architect [desc]` | Call architect to plan implementation |
+| `/design-review` | Run design review |
+| `/review` | Run code review |
+| `/tdd [desc]` | Start TDD flow |
+| `/commit "message"` | Commit with review check |
 
 ---
 
 ## SubAgents
 
-### 設計フェーズ
-- **architect**: 実装方針の立案、技術選定
-- **design-reviewer**: 設計方針のレビュー、承認
-- **modeler**: ドメインモデリング、業務設計
+### Design Phase
+- **architect**: Plan implementation, tech selection
+- **design-reviewer**: Review and approve design
+- **modeler**: Domain modeling, business design
 
-### 実装フェーズ
-- **api-developer**: Rails API開発
-- **frontend-developer**: React/ViewComponent開発
-- **db-designer**: スキーマ設計、マイグレーション
-- **ui-designer**: UIデザイン、スタイリング
+### Implementation Phase
+- **api-developer**: Rails API development
+- **frontend-developer**: React/ViewComponent development
+- **db-designer**: Schema design, migrations
+- **ui-designer**: UI design, styling
 
-### レビュー・品質改善フェーズ
-- **code-reviewer**: commit前のコードレビュー
-- **debugger**: 体系的な根本原因分析でバグを解決
-- **refactorer**: コード品質向上、技術的負債の削減
+### Review & Quality Phase
+- **code-reviewer**: Pre-commit code review
+- **debugger**: Systematic root cause analysis
+- **refactorer**: Code quality, tech debt reduction
 
-### TDDフェーズ
-- **tdd-test-writer**: テストの作成（Redフェーズ）
-- **tdd-implementer**: 最小限の実装（Greenフェーズ）
+### TDD Phase
+- **tdd-test-writer**: Write tests (Red phase)
+- **tdd-implementer**: Minimal implementation (Green phase)
 
 ---
 
-## MCP（Model Context Protocol）
+## MCP (Model Context Protocol)
 
-MCP設定は`.claude/.mcp.json`に記述します。
+MCP config is in `.claude/.mcp.json`.
 
-### 初期設定（Context7 API Key）
+### Setup (Context7 API Key)
 
-Context7を使用するには、API Keyの設定が必要です。
+To use Context7, API Key is required.
 
-1. [Context7](https://context7.com/)でAPI Keyを取得
-2. `.claude/.mcp.json`のcontext7セクションにenv設定を追加:
+1. Get API Key from [Context7](https://context7.com/)
+2. Add env to context7 section in `.claude/.mcp.json`:
 
 ```json
 {
@@ -144,56 +144,56 @@ Context7を使用するには、API Keyの設定が必要です。
 }
 ```
 
-**注意**: API Keyを含む`.mcp.json`は`.gitignore`に追加するか、`settings.local.json`で管理してください。
+**Note**: Add `.mcp.json` to `.gitignore` if it contains API keys.
 
-### 利用可能なMCPサーバー
+### Available MCP Servers
 
 #### Playwright
-UIのスクリーンショット撮影、ブラウザ操作。
+UI screenshots, browser automation.
 
 ```
 mcp__playwright__browser_navigate
 mcp__playwright__browser_screenshot
 ```
 
-**注意**: スクリーンショットは必ず`magick`でリサイズしてから使用。
+**Note**: Always resize screenshots with `magick` before use.
 
 #### Chrome DevTools
-ブラウザのDevTools操作。
+Browser DevTools operations.
 
 #### Context7
-OSS（Rails、ViewComponentなど）の最新ドキュメントにアクセス。
+Access latest OSS docs (Rails, ViewComponent, etc).
 
 ```
-Context7を使って、ViewComponentの最新ドキュメントを確認して
+Use Context7 to check latest ViewComponent docs
 ```
 
 ---
 
-## Git/GitHub操作
+## Git/GitHub
 
-- `gh`コマンドを使用（MCP経由ではない）
-- PRの作成: `gh pr create`
-- Issue操作: `gh issue list`, `gh issue create`
-
----
-
-## 一時ファイル
-
-作業中に作成する一時ファイルは`.claude/tmp/`に保存してください:
-
-- 設計書: `.claude/tmp/design/`
-- スクリーンショット: `.claude/tmp/screenshots/`
-- 調査メモ: `.claude/tmp/research/`
+- Use `gh` command (not MCP)
+- Create PR: `gh pr create`
+- Issues: `gh issue list`, `gh issue create`
 
 ---
 
-## ルール参照
+## Temp Files
 
-詳細なルールは`.claude/rules/`を参照:
-- @rules/general.md - 一般ルール
-- @rules/tdd.md - TDDルール
-- @rules/commit.md - コミットルール
-- @rules/playwright.md - Playwrightルール
-- @rules/ask-user.md - 確認ルール
-- @rules/tmp-files.md - 一時ファイルルール
+Save temp files to `.claude/tmp/`:
+
+- Design docs: `.claude/tmp/design/`
+- Screenshots: `.claude/tmp/screenshots/`
+- Research notes: `.claude/tmp/research/`
+
+---
+
+## Rules Reference
+
+See `.claude/rules/` for detailed rules:
+- @rules/general.md - General rules
+- @rules/tdd.md - TDD rules
+- @rules/commit.md - Commit rules
+- @rules/playwright.md - Playwright rules
+- @rules/ask-user.md - Confirmation rules
+- @rules/tmp-files.md - Temp file rules

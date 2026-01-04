@@ -1,24 +1,24 @@
 ---
-description: 設計レビュアーを呼び出して設計方針をレビューする
-argument-hint: [設計書パスまたは設計名（省略可）]
+description: Call design reviewer to review design strategy
+argument-hint: [Design doc path or name (optional)]
 ---
 
-# 設計レビュー起動
+# Design Review Launch
 
-design-reviewer SubAgentを使用して、設計方針をレビューしてください。
+Use design-reviewer SubAgent to review design strategy.
 
-## 対象
+## Target
 $ARGUMENTS
 
-引数が指定されていない場合は、`.claude/tmp/design/`配下の最新の設計書をレビューしてください。
+If no argument specified, review the latest design doc under `.claude/tmp/design/`.
 
-## 実行手順
+## Execution Steps
 
-1. 設計書を読み込む
-2. レビュー観点に基づいて評価
-3. 改善提案を作成
-4. 承認/差し戻し判定
+1. Load design doc
+2. Evaluate based on review perspectives
+3. Create improvement suggestions
+4. Decide approval/rejection
 
-## 出力
+## Output
 
-レビュー結果を報告し、次のアクション（実装開始または再設計）を提案してください。
+Report review results and suggest next action (start implementation or redesign).

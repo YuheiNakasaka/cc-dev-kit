@@ -1,26 +1,26 @@
-# コミット前レビュールール
+# Pre-Commit Review Rules
 
-## 基本方針
-- コードの変更をcommitする前に、コードレビューを実施することを強く推奨
-- `/review` コマンドでレビューを依頼できる
+## Basic Policy
+- Strongly recommend code review before committing changes
+- Use `/review` command to request review
 
-## レビューの観点
-1. **機能性**: 要件を満たしているか
-2. **可読性**: コードが理解しやすいか
-3. **保守性**: 将来の変更に対応しやすいか
-4. **テスト**: 適切なテストが書かれているか
-5. **セキュリティ**: セキュリティ上の問題がないか
-6. **パフォーマンス**: パフォーマンス上の問題がないか
+## Review Perspectives
+1. **Functionality**: Does it meet requirements?
+2. **Readability**: Is the code easy to understand?
+3. **Maintainability**: Is it easy to modify in the future?
+4. **Testing**: Are appropriate tests written?
+5. **Security**: Are there any security issues?
+6. **Performance**: Are there any performance issues?
 
-## レビュー未実施の場合
-- commit時にレビュー未実施の警告が表示される
-- ブロックはされないが、レビュー実施を検討すること
+## If Review Not Done
+- Warning shown at commit time
+- Not blocked, but consider doing review
 
-## レビューの依頼方法
+## How to Request Review
 ```
 /review
 ```
-または
+or
 ```
-コードレビューをお願いします
+Please review this code
 ```

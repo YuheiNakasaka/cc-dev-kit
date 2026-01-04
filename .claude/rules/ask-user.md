@@ -1,33 +1,33 @@
-# 要求確認ルール
+# Requirement Confirmation Rules
 
-## 基本方針
-実装計画を立てる前に、要求や仕様に以下の問題があると思われる場合は、`AskUserQuestion`ツールを使って依頼者に確認を求めること。
+## Basic Policy
+Before planning implementation, use `AskUserQuestion` tool to confirm with the requester if the requirements or specifications have the following issues.
 
-## 確認が必要なケース
+## Cases Requiring Confirmation
 
-### 1. 曖昧さ
-- 要求の意図が複数の解釈が可能な場合
-- 「〜のような」「〜的な」といった曖昧な表現がある場合
+### 1. Ambiguity
+- When requirements can be interpreted in multiple ways
+- When vague expressions like "something like" exist
 
-### 2. 不明瞭さ
-- 技術的な詳細が不足している場合
-- 期待する動作が明確でない場合
+### 2. Unclear Details
+- When technical details are insufficient
+- When expected behavior is not clear
 
-### 3. 漏れ
-- エッジケースの考慮が必要そうな場合
-- エラーハンドリングの方針が不明な場合
-- 複数の選択肢があり、どれを選ぶべきか判断できない場合
+### 3. Missing Information
+- When edge cases need consideration
+- When error handling policy is unclear
+- When there are multiple choices and it's hard to decide
 
-## 確認の方法
+## How to Confirm
 
 ```
-AskUserQuestion ツールを使用して、
-- 具体的な質問を投げかける
-- 選択肢を提示する（可能であれば推奨を示す）
-- 背景情報を添える
+Use AskUserQuestion tool to:
+- Ask specific questions
+- Present options (with recommendation if possible)
+- Add background information
 ```
 
-## 例
-「認証方式について確認させてください。JWTとセッションベースのどちらを希望されますか？
-- JWT（推奨）: ステートレス、スケーラブル
-- セッション: サーバー側で状態管理、即時無効化が容易」
+## Example
+"Let me confirm about authentication method. Do you prefer JWT or session-based?
+- JWT (Recommended): Stateless, scalable
+- Session: Server-side state management, easy immediate invalidation"

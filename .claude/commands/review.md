@@ -1,19 +1,19 @@
 ---
-description: コードレビュアーを呼び出してコードレビューを実行する
-argument-hint: [ファイルパス（省略可）]
+description: Call code reviewer to execute code review
+argument-hint: [File path (optional)]
 allowed-tools: Bash(git diff:*), Bash(git status:*), Read, Glob, Grep
 ---
 
-# コードレビュー起動
+# Code Review Launch
 
-code-reviewer SubAgentを使用して、コードレビューを実行してください。
+Use code-reviewer SubAgent to execute code review.
 
-## 対象
+## Target
 $ARGUMENTS
 
-引数が指定されていない場合は、現在の変更（git diff）をレビューしてください。
+If no argument specified, review current changes (git diff).
 
-## 事前確認
+## Pre-check
 
 ```bash
 git status
@@ -21,17 +21,17 @@ git diff --staged
 git diff
 ```
 
-## 実行手順
+## Execution Steps
 
-1. 変更内容を把握
-2. レビュー観点に基づいて評価
-3. 指摘事項を整理
-4. 総合評価を決定
+1. Understand changes
+2. Evaluate based on review perspectives
+3. Organize issues
+4. Determine overall evaluation
 
-## 出力
+## Output
 
-レビュー結果を報告し、コミット可否の判断を提示してください。
+Report review results and present commit decision.
 
-- **LGTM**: コミット可能
-- **要修正**: 修正後に再レビュー
-- **要議論**: 追加の議論が必要
+- **LGTM**: Ready to commit
+- **Needs Changes**: Re-review after fixes
+- **Needs Discussion**: Additional discussion required

@@ -1,23 +1,23 @@
 ---
-description: アーキテクトを呼び出して実装方針を立案する
-argument-hint: [機能の説明]
+description: Call architect to plan implementation strategy
+argument-hint: [Feature description]
 ---
 
-# アーキテクト起動
+# Architect Launch
 
-architect SubAgentを使用して、以下の機能の実装方針を立案してください。
+Use architect SubAgent to plan implementation strategy for the following feature.
 
-## 対象機能
+## Target Feature
 $ARGUMENTS
 
-## 実行手順
+## Execution Steps
 
-1. 要件を分析し、不明点があれば`AskUserQuestion`で確認
-2. 既存コードベースを調査
-3. 実装方針を立案
-4. 設計書を`.claude/tmp/design/`に作成
-5. 設計レビューの準備
+1. Analyze requirements, confirm unclear points with `AskUserQuestion`
+2. Investigate existing codebase
+3. Plan implementation strategy
+4. Create design doc in `.claude/tmp/design/`
+5. Prepare for design review
 
-## 出力
+## Output
 
-設計書を作成し、設計レビュー（`/design-review`）の実施を推奨してください。
+Create design doc and recommend design review (`/design-review`).

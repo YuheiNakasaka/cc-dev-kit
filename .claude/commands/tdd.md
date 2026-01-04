@@ -1,49 +1,49 @@
 ---
-description: TDD（テスト駆動開発）フローを開始する
-argument-hint: [実装したい機能の説明]
+description: Start TDD (Test-Driven Development) flow
+argument-hint: [Feature description to implement]
 ---
 
-# TDD開発フロー起動
+# TDD Development Flow Launch
 
-テスト駆動開発（TDD）のRed-Green-Refactorサイクルを開始します。
+Start TDD Red-Green-Refactor cycle.
 
-## 対象機能
+## Target Feature
 $ARGUMENTS
 
-## フロー
+## Flow
 
-### Phase 1: Red（テスト作成）
-tdd-test-writer SubAgentを使用して、失敗するテストを作成します。
+### Phase 1: Red (Test Creation)
+Use tdd-test-writer SubAgent to create failing tests.
 
-1. 要件をテストケースとして表現
-2. テストコードを作成
-3. テストが失敗することを確認
+1. Express requirements as test cases
+2. Create test code
+3. Verify tests fail
 
-### Phase 2: Green（実装）
-tdd-implementer SubAgentを使用して、テストを通す最小限の実装を行います。
+### Phase 2: Green (Implementation)
+Use tdd-implementer SubAgent to create minimal implementation to pass tests.
 
-1. テストを読んで理解
-2. 最小限の実装を作成
-3. テストがパスすることを確認
+1. Read and understand tests
+2. Create minimal implementation
+3. Verify tests pass
 
-### Phase 3: Refactor（リファクタリング）
-テストを維持しながら、コードを改善します。
+### Phase 3: Refactor (Refactoring)
+Improve code while maintaining tests.
 
-1. 重複の除去
-2. 命名の改善
-3. 構造の整理
-4. テストがパスすることを確認
+1. Remove duplication
+2. Improve naming
+3. Organize structure
+4. Verify tests pass
 
-## 実行方法
+## Execution Method
 
-各フェーズを順番に実行し、フェーズ間で確認を行います。
+Execute each phase in order with verification between phases.
 
 ```
-Phase 1 (Red) → テスト失敗確認 → Phase 2 (Green) → テスト成功確認 → Phase 3 (Refactor) → テスト成功確認
+Phase 1 (Red) → Verify test failure → Phase 2 (Green) → Verify test success → Phase 3 (Refactor) → Verify test success
 ```
 
-## 注意事項
+## Notes
 
-- 各フェーズは独立したSubAgentが担当
-- テスト作成者は実装を知らない状態で作業
-- 実装者はテストに書かれていない機能を追加しない
+- Each phase is handled by independent SubAgent
+- Test writer works without knowing implementation
+- Implementer doesn't add features not in tests

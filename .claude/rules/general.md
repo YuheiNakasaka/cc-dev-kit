@@ -1,26 +1,26 @@
-# 一般的な開発ルール
+# General Development Rules
 
-## Git/GitHub操作
-- gitやGitHubへのアクセスにはMCP経由ではなく、ローカルの`gh`コマンドを使用すること
-- PRの作成、Issue操作、リポジトリ操作は全て`gh`コマンドで行う
+## Git/GitHub Operations
+- Use local `gh` command for git/GitHub access, not MCP
+- All PR creation, Issue operations, and repository operations should use `gh` command
 
 ```bash
-# PRの作成例
-gh pr create --title "タイトル" --body "説明"
+# Create PR example
+gh pr create --title "Title" --body "Description"
 
-# Issue一覧の取得
+# List issues
 gh issue list
 
-# PRのマージ
+# Merge PR
 gh pr merge --squash
 ```
 
-## コミット規約
-- 1機能を実装するごとにこまめに`git add`と`git commit`を行う
-- コミットメッセージは日本語で、変更内容を簡潔に記述する
-- 大きな変更は小さなコミットに分割する
+## Commit Convention
+- Commit frequently with `git add` and `git commit` for each feature
+- Write commit messages in Japanese, describing changes concisely
+- Split large changes into smaller commits
 
-## コード品質
-- 実装前に必ずアーキテクトによる方針立案を行う
-- 方針は設計レビュアーの確認を経てから実装に進む
-- commit前にはコードレビューを実施することを推奨
+## Code Quality
+- Always plan implementation with architect before coding
+- Get design reviewer approval before implementation
+- Code review before commit is recommended

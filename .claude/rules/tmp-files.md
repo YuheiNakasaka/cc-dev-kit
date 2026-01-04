@@ -1,30 +1,30 @@
-# 一時ファイルルール
+# Temp File Rules
 
-## 保存先
-作業中に作成した一時的なファイルや設計書は、必ず `.claude/tmp/` ディレクトリに作成すること。
+## Location
+Always create temporary files and design docs in `.claude/tmp/` directory.
 
-## 対象ファイル
-- 設計書・設計メモ
-- 調査結果のまとめ
-- スクリーンショット
-- 一時的なスクリプト
-- デバッグ用のログファイル
-- その他の作業用ファイル
+## Target Files
+- Design docs and memos
+- Research summaries
+- Screenshots
+- Temporary scripts
+- Debug log files
+- Other working files
 
-## ファイル命名規則
+## Naming Convention
 ```
 .claude/tmp/
-├── design/           # 設計関連
+├── design/           # Design related
 │   └── feature-x-design.md
-├── screenshots/      # スクリーンショット
+├── screenshots/      # Screenshots
 │   └── ui-check-2024-01-01.png
-├── research/         # 調査メモ
+├── research/         # Research notes
 │   └── api-investigation.md
-└── scripts/          # 一時スクリプト
+└── scripts/          # Temp scripts
     └── data-migration.rb
 ```
 
-## 注意事項
-- `.claude/tmp/` は `.gitignore` に設定されており、git管理されない
-- 重要な情報は適切な場所に移動またはドキュメント化すること
-- 定期的に不要なファイルを削除すること
+## Notes
+- `.claude/tmp/` is in `.gitignore`, not tracked by git
+- Move or document important information to appropriate locations
+- Periodically delete unnecessary files

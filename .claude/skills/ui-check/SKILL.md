@@ -1,85 +1,85 @@
 ---
 name: ui-check
-description: Playwright MCPを使用してUIのスタイルやユーザビリティを確認する。「UIを確認して」「見た目をチェックして」「スクリーンショットを撮って」といった依頼で自動的に使用される。
+description: Use Playwright MCP to check UI styles and usability. Automatically used for requests like "check UI", "verify appearance", "take screenshot".
 allowed-tools: mcp__playwright, Bash, Read
 ---
 
-# UI確認スキル
+# UI Check Skill
 
-Playwright MCPを使用して、UIのスタイルやユーザビリティを確認します。
+Use Playwright MCP to verify UI styles and usability.
 
-## 使用方法
+## Usage
 
-### 1. ブラウザを起動
+### 1. Launch Browser
 ```
-mcp__playwright__browser_navigate で対象URLにアクセス
-```
-
-### 2. スクリーンショット撮影
-```
-mcp__playwright__browser_screenshot でスクリーンショットを撮影
+Navigate to target URL with mcp__playwright__browser_navigate
 ```
 
-### 3. 画像のリサイズ（必須）
+### 2. Take Screenshot
+```
+Take screenshot with mcp__playwright__browser_screenshot
+```
 
-スクリーンショットは必ずImageMagickでリサイズしてからClaude Codeで分析すること。
+### 3. Resize Image (Required)
+
+Always resize screenshots with ImageMagick before analyzing in Claude Code.
 
 ```bash
-# 幅1024pxにリサイズ
+# Resize to 1024px width
 magick screenshot.png -resize 1024x .claude/tmp/screenshots/resized.png
 ```
 
-### 4. UI分析
+### 4. UI Analysis
 
-リサイズした画像を読み込んで分析:
-- レイアウトの確認
-- スタイルの確認
-- アクセシビリティの確認
-- ユーザビリティの確認
+Load resized image and analyze:
+- Layout verification
+- Style verification
+- Accessibility verification
+- Usability verification
 
-## 確認観点
+## Check Perspectives
 
-### レイアウト
-- 要素の配置は適切か
-- レスポンシブ対応は適切か
-- 余白・間隔は統一されているか
+### Layout
+- Is element placement appropriate?
+- Is responsive design appropriate?
+- Are margins/spacing consistent?
 
-### スタイル
-- 色使いは適切か
-- フォントは読みやすいか
-- アイコンは適切か
+### Style
+- Is color usage appropriate?
+- Are fonts readable?
+- Are icons appropriate?
 
-### アクセシビリティ
-- コントラスト比は十分か
-- フォーカス状態は明確か
-- テキストサイズは適切か
+### Accessibility
+- Is contrast ratio sufficient?
+- Are focus states clear?
+- Is text size appropriate?
 
-### ユーザビリティ
-- 操作は直感的か
-- フィードバックは明確か
-- エラー状態は分かりやすいか
+### Usability
+- Is operation intuitive?
+- Is feedback clear?
+- Are error states understandable?
 
-## 出力
+## Output
 
 ```markdown
-# UI確認結果
+# UI Check Result
 
-## スクリーンショット
-[画像パス]
+## Screenshot
+[Image path]
 
-## 確認結果
+## Results
 
-### 良い点
+### Good Points
 - ...
 
-### 改善提案
+### Improvement Suggestions
 - ...
 
-## 推奨アクション
+## Recommended Actions
 - ...
 ```
 
-## 注意事項
-- スクリーンショットは`.claude/tmp/screenshots/`に保存
-- 必ず`magick`コマンドでリサイズしてから分析
-- 大きな画像をそのまま使うとクラッシュの原因になる
+## Notes
+- Save screenshots to `.claude/tmp/screenshots/`
+- Always resize with `magick` command before analysis
+- Using large images directly may cause crashes

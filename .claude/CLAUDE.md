@@ -44,10 +44,10 @@
 ## ディレクトリ構造
 
 ```
+.mcp.json                  # MCP設定（API Key等を含む場合は.gitignore推奨）
 .claude/
 ├── CLAUDE.md              # このファイル
 ├── settings.json          # Claude Code設定（Hooks、権限）
-├── .mcp.json              # MCP設定（API Key等を含む場合は.gitignore推奨）
 ├── tmp/                   # 一時ファイル（git管理外）
 │   └── design/            # 設計書
 ├── rules/                 # 自動適用ルール
@@ -74,11 +74,11 @@
 │   ├── ui-check/          # UI確認スキル
 │   └── external-systems/  # 外部システム連携
 └── commands/              # スラッシュコマンド
-    ├── architect.md       # /architect
-    ├── design-review.md   # /design-review
-    ├── review.md          # /review
-    ├── tdd.md             # /tdd
-    └── commit.md          # /commit
+   ├── architect.md       # /architect
+   ├── design-review.md   # /design-review
+   ├── review.md          # /review
+   ├── tdd.md             # /tdd
+   └── commit.md          # /commit
 ```
 
 ---

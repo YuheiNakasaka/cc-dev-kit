@@ -1,6 +1,11 @@
 {
   "permissions": {
-    "allow": [],
+    "allow": [
+      "Read(*)",
+      "Write(*)",
+      "Edit(*)",
+      "WebSearch"
+    ],
     "deny": [
       "Bash(curl:*)",
       "Read(./.env)",

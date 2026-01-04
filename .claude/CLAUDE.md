@@ -21,28 +21,62 @@ Copy this template to other projects to get:
 
 ## Development Flow
 
-### Recommended Flow
+### SubAgent-First Workflow
 
+**Always start development with SubAgents, not commands.** Claude Code will automatically spawn appropriate SubAgents based on the task context.
+
+#### Phase 1: Analysis & Planning
 ```
-1. /architect [feature]      → Design implementation plan
-2. /design-review            → Review design
-3. /tdd [feature]            → TDD implementation (Test → Code → Refactor)
-4. /review                   → Code review
-5. /commit "message"         → Commit with review check
+1. orchestrator     → Analyzes complex requests, coordinates workflow
+2. architect        → Designs implementation plan, tech selection
+3. design-reviewer  → Reviews and approves design
+```
+
+**orchestrator** is auto-activated for complex multi-module tasks like:
+- "implement full feature"
+- "build complete"
+- "end-to-end implementation"
+- "full stack development"
+
+**architect** plans implementation for requests like:
+- "plan implementation"
+- "design architecture"
+- "how should we implement"
+
+#### Phase 2: Implementation
+```
+4. tdd-test-writer    → Write tests first (Red phase)
+5. tdd-implementer    → Minimal implementation (Green phase)
+6. api-developer      → Rails API endpoints
+7. frontend-developer → React/ViewComponent development
+8. db-designer        → Schema design, migrations
+9. ui-designer        → UI design, styling
+```
+
+#### Phase 3: Quality Assurance
+```
+10. code-reviewer → Pre-commit code review (/review)
+11. refactorer    → Code quality improvements
+12. debugger      → Root cause analysis for issues
+```
+
+#### Phase 4: Commit
+```
+13. /commit "message" → Commit with review confirmation
 ```
 
 ### TDD (Test-Driven Development)
 
-Test-first development is recommended. Start with `/tdd` command.
+Test-first development is recommended. Request "TDD implementation" to start TDD flow.
 
-1. **Red**: Write test first (verify it fails)
-2. **Green**: Minimal implementation to pass test
+1. **Red**: `tdd-test-writer` agent writes test first (verify it fails)
+2. **Green**: `tdd-implementer` agent writes minimal implementation
 3. **Refactor**: Improve code (keep tests passing)
 
 ### Commit Convention
 
 - Commit frequently per feature
-- Code review before commit is recommended
+- Code review before commit is recommended (`/review`)
 - Warning shown on commit, but not blocked
 
 ---
@@ -76,56 +110,62 @@ Test-first development is recommended. Start with `/tdd` command.
 │   ├── modeler/           # Domain modeler
 │   ├── tdd-test-writer/   # TDD test writer
 │   └── tdd-implementer/   # TDD implementer
-├── skills/                # Skills
+├── skills/                # Complex skills (with SKILL.md)
 │   ├── ui-check/          # UI check skill
 │   └── external-systems/  # External system integration
-└── commands/              # Slash commands
-    ├── architect.md       # /architect
-    ├── design-review.md   # /design-review
-    ├── review.md          # /review
-    ├── tdd.md             # /tdd
-    └── commit.md          # /commit
+├── commands/              # User-invocable skills (slash commands)
+│   ├── review.md          # /review → triggers code-reviewer agent
+│   └── commit.md          # /commit → commit with review check
 └── .mcp.json              # MCP config (add to .gitignore if contains API keys)
 ```
 
 ---
 
-## Commands
+## Skills (User-Invocable)
 
-| Command | Description |
-|---------|-------------|
-| `/architect [desc]` | Call architect to plan implementation |
-| `/design-review` | Run design review |
-| `/review` | Run code review |
-| `/tdd [desc]` | Start TDD flow |
-| `/commit "message"` | Commit with review check |
+Minimal set of slash commands for essential workflows:
+
+| Skill | Description | Triggers SubAgent |
+|-------|-------------|-------------------|
+| `/review` | Pre-commit code review | code-reviewer |
+| `/commit "message"` | Commit with review check | - |
+| `/ui-check` | Check UI styles and usability | - (uses Playwright MCP) |
+
+**For all other workflows** (planning, design, TDD, implementation), simply describe what you want to build. Claude Code will automatically spawn the appropriate SubAgents (orchestrator, architect, tdd-test-writer, etc.).
 
 ---
 
 ## SubAgents
 
-### Coordination
-- **orchestrator**: Workflow coordination for complex multi-module tasks (auto-activated)
+SubAgents are specialized AI agents that handle specific development tasks. **Claude Code automatically spawns appropriate SubAgents based on your request.**
+
+### Primary Entry Points (Start Here)
+
+| Agent | Auto-Activation Triggers | Role |
+|-------|-------------------------|------|
+| **orchestrator** | "implement full feature", "build complete", "end-to-end", "full stack", "spans multiple modules" | Senior architect & workflow coordinator. Analyzes requirements, breaks down tasks, coordinates other SubAgents |
+| **architect** | "plan implementation", "design architecture", "how should we implement" | Designs implementation strategy, identifies critical files, considers trade-offs |
+
+**Best Practice**: For any non-trivial task, simply describe what you want to build. The orchestrator will automatically analyze, plan, and coordinate the appropriate SubAgents.
 
 ### Design Phase
-- **architect**: Plan implementation, tech selection
-- **design-reviewer**: Review and approve design
-- **modeler**: Domain modeling, business design
+- **design-reviewer**: Reviews architect's design plan before implementation
+- **modeler**: Domain modeling, business logic organization, design diagrams
 
 ### Implementation Phase
-- **api-developer**: Rails API development
-- **frontend-developer**: React/ViewComponent development
-- **db-designer**: Schema design, migrations
-- **ui-designer**: UI design, styling
+- **api-developer**: Rails API endpoints, backend development
+- **frontend-developer**: React/ViewComponent, UI implementation
+- **db-designer**: Database schema design, migrations
+- **ui-designer**: UI design, styling, appearance improvements
 
-### Review & Quality Phase
-- **code-reviewer**: Pre-commit code review
-- **debugger**: Systematic root cause analysis
-- **refactorer**: Code quality, tech debt reduction
+### Quality & Review Phase
+- **code-reviewer**: Pre-commit code review, checks changes
+- **debugger**: Systematic root cause analysis for bugs and errors
+- **refactorer**: Code quality improvements, tech debt reduction
 
 ### TDD Phase
-- **tdd-test-writer**: Write tests (Red phase)
-- **tdd-implementer**: Minimal implementation (Green phase)
+- **tdd-test-writer**: Writes tests first (Red phase)
+- **tdd-implementer**: Minimal implementation to pass tests (Green phase)
 
 ---
 

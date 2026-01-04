@@ -4,7 +4,13 @@
       "Read(*)",
       "Write(*)",
       "Edit(*)",
-      "WebSearch"
+      "Update(*)",
+      "WebSearch",
+      "Skill(*)",
+      "Agent(*)",
+      "Hook(*)",
+      "Command(*)",
+      "SubAgent(*)"
     ],
     "deny": [
       "Bash(curl:*)",

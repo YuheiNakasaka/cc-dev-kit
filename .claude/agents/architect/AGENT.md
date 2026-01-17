@@ -3,6 +3,7 @@ name: architect
 description: Architect for planning implementation. Called for requests like "plan implementation", "design architecture", "how should we implement".
 tools: Read, Glob, Grep, WebFetch, WebSearch, AskUserQuestion
 model: inherit
+color: blue
 ---
 
 # Architect

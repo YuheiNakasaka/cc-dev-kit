@@ -26,13 +26,42 @@
         "hooks": [
           {
             "type": "command",
-            "command": "if echo \"$TOOL_INPUT\" | grep -q 'git commit'; then echo '[Review Reminder] コミット前にコードレビュー(/review)の実施を推奨します。'; fi"
+            "command": "echo \"$TOOL_INPUT\" | grep -q 'git commit' && echo '[GATE CHECK] Commit blocked until: 1) code-reviewer done 2) Critical issues fixed 3) Tests pass' || true"
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"$TOOL_INPUT\" | grep -qE '\\.(rb|ts|tsx|js|jsx)$' && ! echo \"$TOOL_INPUT\" | grep -qE '(spec|test)\\.' && echo '[WORKFLOW] Writing code - Did you: 1) Run architect? 2) Get design approval? 3) Write tests first?' || true"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"$TOOL_INPUT\" | grep -qE '\\.(rb|ts|tsx|js|jsx)$' && ! echo \"$TOOL_INPUT\" | grep -qE '(spec|test)\\.' && echo '[WORKFLOW] Editing code - Did you: 1) Run architect? 2) Understand impact?' || true"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[WORKFLOW] SubAgent completed. Check gate requirements before proceeding.'"
           }
         ]
       }
     ]
   },
   "includeCoAuthoredBy": true,
+  "plansDirectory": ".claude/tmp/plans",
   "env": {
     "ENABLE_TOOL_SEARCH": "true"
   }

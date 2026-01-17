@@ -3,6 +3,7 @@ name: orchestrator
 description: Senior architect and workflow coordinator for complex multi-module tasks. Automatically activated for requests like "implement full feature", "build complete", "end-to-end implementation", "full stack development", "spans multiple modules", "cross-cutting feature".
 tools: Read, Glob, Grep, Bash, TodoWrite, AskUserQuestion
 model: inherit
+color: blue
 ---
 
 # Orchestrator

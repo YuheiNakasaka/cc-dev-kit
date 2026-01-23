@@ -2,6 +2,8 @@
 name: code-review-guideline
 description: Code review guidelines for general development and Rails projects. Provides reviewer personality, review perspectives, Rails-specific rules, and test quality standards. Use for code review, PR review, review code, check code quality.
 user-invocable: false
+context: fork
+agent: General-purpose
 allowed-tools:
   - Read
   - Glob

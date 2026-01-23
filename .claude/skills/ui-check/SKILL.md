@@ -1,7 +1,15 @@
 ---
 name: ui-check
-description: Use Playwright MCP to check UI styles and usability. Automatically used for requests like "check UI", "verify appearance", "take screenshot".
-allowed-tools: mcp__playwright, Bash, Read
+description: Use Playwright MCP to check UI styles and usability. Automatically used for requests like "check UI", "verify appearance", "take screenshot", "UI review", "screenshot analysis".
+context: fork
+agent: Explore
+allowed-tools:
+  - mcp__playwright__browser_navigate
+  - mcp__playwright__browser_take_screenshot
+  - mcp__playwright__browser_snapshot
+  - mcp__playwright__browser_click
+  - Bash
+  - Read
 ---
 
 # UI Check Skill

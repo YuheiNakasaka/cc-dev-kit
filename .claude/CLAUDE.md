@@ -62,6 +62,7 @@ Skills provide domain-specific knowledge and tooling. Automatically invoked base
 | Skill | Description |
 |-------|-------------|
 | `ui-check` | UI verification with Playwright MCP |
+| `agent-browser` | Browser automation with `npx agent-browser` |
 | `external-systems` | External system integration guide |
 | `code-review-guideline` | Code review guidelines |
 
